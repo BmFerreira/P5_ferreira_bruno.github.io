@@ -5,7 +5,6 @@
 //Récupération tableau, produits disponibles
 items();
 
-
 function items() {
     fetch("http://localhost:3000/api/products")
         // quand on a la réponse, résultat donne en json
