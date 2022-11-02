@@ -14,11 +14,11 @@ function getItem() {
         // quand on a la réponse, résultat donne en json
         .then(reponse => { return reponse.json(); })
         // si c'est reçu et traité en json, sera appelé objetItems
-        .then((objetItem) => {
+        .then((objetItems) => {
             // donne informations sur la console en forme de tableau sur ce qui est récupéré
-            console.table(objetItem);
+            console.table(objetItems);
             // appel fonction affichageItems
-            affichageItem(objetItem);
+            affichageItem(objetItems);
         })
         
         // si bug, erreur 404
@@ -128,7 +128,7 @@ ajouterPanier.addEventListener("click", () => {
   } 
     else {
     
-        Panier();
+        panier();
         console.log("clic effectué");
     
         document.querySelector("#addToCart").style.color = "rgb(0, 205, 0)";
@@ -158,7 +158,7 @@ function ajoutPremierProduit() {
         choixProduitClient.push(articleClient);
         console.log(articleClient);
     
-        return (localStorage.panierStocké = JSON.stringify(choixProduitClient));
+        return (localStorage.stockPanier = JSON.stringify(choixProduitClient));
     }
 }
 
@@ -184,7 +184,7 @@ function ajoutAutreProduit() {
   
     produitsTemporaires = [];
   
-    return (localStorage.panierStocké = JSON.stringify(produitsAPousser));
+    return (localStorage.stockPanier = JSON.stringify(produitsAPousser));
 }
 
 // fonction qui ajuste la quantité du Panier si present au tableau (le rajoute si tableau il y a, ou créait le tableau avec un premier article choisi)
@@ -203,7 +203,7 @@ function panier() {
         
                 choix.quantité = JSON.stringify(additionQuantité);
         
-                return (localStorage.panierStocké = JSON.stringify(produitsEnregistrés));
+                return (localStorage.stockPanier = JSON.stringify(produitsEnregistrés));
             }
         }
         
